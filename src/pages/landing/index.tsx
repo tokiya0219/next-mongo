@@ -21,17 +21,20 @@ export const getStaticProps: GetStaticProps<any> = async () => {
         return {
             props: {
                 todos: []
-            }
+            },
+            revalidate: 60
         }
     }
     return {
         props: {
             todos: JSON.parse(JSON.stringify(todos))
-        }
+        },
+        revalidate: 60
     };
     } catch (e) {
         return {
-            notFound: true
+            notFound: true,
+            revalidate: 60
         }
     }
 }
